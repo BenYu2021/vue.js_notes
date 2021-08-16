@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>指令</title>
+  </head>
+  <body>
+    <div id="app">
+      <p v-text="message"></p>
+      <p>{{message}}, welcome</p>
+      <p>{{ hElt }}</p>
+      <p v-html="hElt"></p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          message: 'Hello vue.js',
+          hElt: '<h1>VC++深入详解</h1>'
+        }
+      });
+    </script>
+  </body>
+</html>

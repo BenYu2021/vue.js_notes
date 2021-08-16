@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "app">
+		  <p>
+		    价格：<input type="text" v-model="price">
+		    数量：<input type="text"  v-model="quantity">
+		  </p>
+		  <p>总价：{{ price | totalPrice(quantity, '￥')}}</p>
+		</div>
+	
+		<script src="vue.js"></script>
+		<script>
+		  Vue.filter('totalPrice', function(value, quantity, prefix){
+		    if(!value) return '';
+		    value = parseInt(value);
+		    return prefix + (value * quantity).toString();
+		  })
+			var vm = new Vue({
+		    el: '#app',
+		    data: {
+		    	price: 0,
+		    	quantity: 0
+		    },
+		  });
+		</script>
+	</body>
+</html>

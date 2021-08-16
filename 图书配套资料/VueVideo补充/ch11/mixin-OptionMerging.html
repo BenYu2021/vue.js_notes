@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>混入</title>
+	</head>
+	<body>
+		<div id="app">
+			<my-component></my-component>
+		</div>
+		<script src="vue.js"></script>
+		<script type = "text/javascript">
+			let myMixin = {
+			  data(){
+			    return {
+			      title: 'VC++深入详解',
+			      message: 'Hello World'
+			    }
+			  },
+			  created(){
+			    document.write("混入对象的钩子被调用<br>");
+			  }
+			}
+			Vue.component('MyComponent', {
+			  data(){
+			    return {
+			      title: 'Vue.js无难事'
+			    }
+			  },
+			  created(){
+			    document.write("组件的钩子被调用<br>");
+			  },
+			  mixins: [myMixin],
+			  template: '<div><h3>{{title}}</h3><p>{{message}}</p></div>'
+			})
+			new Vue({
+			  el: '#app',
+			  
+			})
+		</script>
+	</body>
+</html>

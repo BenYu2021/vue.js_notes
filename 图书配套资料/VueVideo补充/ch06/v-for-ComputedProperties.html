@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>指令</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>已完成的计划</h1>
+      <ul>
+        <li v-for="plan in completedPlans">
+          {{ plan.content }}
+        </li>
+      </ul>
+      
+      <h1>未完成的计划</h1>
+      <ul>
+        <li v-for="plan in incompletePlans">
+          {{ plan.content }}
+        </li>
+      </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          plans: [
+            {content: '吃饭', completed: true},
+            {content: '睡觉', completed: false},
+            {content: '打豆豆', completed: false},
+            {content: '写书', completed: false},
+            {content: '买菜', completed: true}
+          ]
+        },
+        computed: {
+          completedPlans(){
+            return this.plans.filter(plan => plan.completed)
+          },
+          incompletePlans(){
+            return this.plans.filter(plan => !plan.completed)
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

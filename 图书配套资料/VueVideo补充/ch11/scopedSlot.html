@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>插槽</title>
+  </head>
+  <body>
+    <div id="app">
+      <!--
+      <my-button>
+        <template v-slot:default="slotProps">
+          {{slotProps.values.register}}
+        </template>
+      </my-button>
+      -->
+      <my-button>
+        <template v-slot="{values}">
+          {{values.register}}
+        </template>
+        <template v-slot:label="{labels}">
+          {{labels.register}}
+        </template>
+      </my-button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      Vue.component('my-button', {
+        data(){
+          return {
+            title: {
+              login: '登录',
+              register: '注册'
+            }
+          }
+        },
+        template: `
+          <div>
+            <label>
+              <slot name="label" :labels="title">
+                {{title.login}}
+              </slot>
+            </label>
+            <button>
+              <slot :values="title">{{title.login}}</slot>
+            </button>
+          </div>
+        `
+      })
+      var vm = new Vue({
+        el: '#app',
+      })
+    </script>
+  </body>
+</html>

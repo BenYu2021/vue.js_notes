@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+  </head>
+  <body>
+    <div id="app">
+      <!--
+      <post-item post-title="VC++深入详解"></post-item>
+      -->
+      <post-list></post-list>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      Vue.component('PostList', {
+        data(){
+          return {
+            post: {
+              author: '孙鑫',
+              title: 'VC++深入详解',
+              content: '畅销图书'
+            }
+          }
+        },
+        template: `
+          <div>
+            <input type="text" v-model="post.title">
+            <PostItem :post="post"/>
+          </div>
+          `
+      })
+      Vue.component('PostItem', {
+        //props: ['post'],
+        props: {
+          post: {
+            type: Object,
+            default: function(){
+              return {}
+            }
+          }
+        },
+        template: `
+          <div>
+            <h3>{{post.title}}</h3>
+            <p>作者：{{post.author}}</p>
+            <p>{{post.content}}</p>
+          </div>`
+      })
+      var vm = new Vue({
+        el: '#app',
+      })
+    </script>
+  </body>
+</html>

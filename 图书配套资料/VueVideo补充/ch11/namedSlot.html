@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>插槽</title>
+  </head>
+  <body>
+    <div id="app">
+      <base-layout>
+        <template #footer>
+          这是页脚部分，包括联系方式，友情链接等
+        </template>
+        <template #header>
+          <h1>这是页头部分</h1>
+        </template>
+        <template #default>
+          <section>这是正文的一个段落</section>
+          <section>另一个段落</section>
+        </template>
+      </base-layout>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      Vue.component('base-layout', {
+        template: `
+          <div>
+            <header>
+              <slot name="header"></slot>
+            </header>
+            <main>
+              <slot></slot>
+            </main>
+            <footer>
+              <slot name="footer"></slot>
+            </footer>
+          </div>
+        `
+      })
+      var vm = new Vue({
+        el: '#app',
+      })
+    </script>
+  </body>
+</html>

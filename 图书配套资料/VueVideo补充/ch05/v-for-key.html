@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>指令</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        ID：<input type="text" v-model="bookId">
+        书名：<input type="text" v-model="title">
+        <button @click="add">添加</button>
+      </div>
+      <p v-for="book in books" :key="book.id">
+        <input type="checkbox">
+        <span>{{book.id}} - {{book.title}}</span>
+      </p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          bookId: '',
+          title: '',
+          books:[
+            {id: 1, title: 'Vue.js从入门到实战'},
+            {id: 2, title: 'VC++深入详解'},
+            {id: 3, title: 'Servlet/JSP深入详解'},
+          ]
+        },
+        methods: {
+          add(){
+            this.books.unshift({
+              id: this.bookId,
+              title: this.title
+            })
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+
+	</head>
+	<body>
+		<div id="app">
+		  <my-checkbox v-model="isAgree" value="同意协议"></my-checkbox>
+		  <p>{{isAgree}}</p>
+		</div>
+	  <script src="vue.js"></script>
+		<script>
+			Vue.component('MyCheckbox', {
+			  model: {
+			    prop: 'checked',
+			    event: 'change'
+			  },
+			  props: {
+			    value: String,
+			    checked: {
+			      type: Boolean,
+			      default: false
+			    }
+			  },
+			  template: `
+			    <div>
+			      <input 
+			        type="checkbox"
+			        :checked="checked"
+			        @change="$emit('change', $event.target.checked)">
+			      <label>{{value}}</label>
+			    </div>
+			  `
+			})
+			new Vue({
+			  el: '#app',
+			  data: {
+			    isAgree: false
+			  }
+			})
+		</script>
+	</body>
+</html>

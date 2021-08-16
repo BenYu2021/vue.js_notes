@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>监听器</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>
+        请输入要计算斐波那契数列的第几个数：
+        <input type="text" v-model="num">
+      </p>
+      <p v-show="result">{{ result }}</p>
+    </div>
+   
+    <script src="vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          num: 0,
+          result: ''
+        },
+        watch: {
+          num(val){
+            this.result = "请稍候...";
+            if(val > 0){
+              //let that = this;
+              let worker = new Worker("fibonacci.js");
+              /*worker.onmessage = function(event){
+                that.result = event.data;
+              }*/
+              worker.onmessage = event => this.result = event.data;
+              
+              worker.postMessage(val);
+            }
+          }
+        }
+      })
+      
+    </script>
+  </body>
+</html>

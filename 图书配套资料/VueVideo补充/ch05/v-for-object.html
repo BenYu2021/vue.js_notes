@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>指令</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(value, key, index) of book">
+          {{index}}. {{key}} : {{ value }}
+        </li>
+      </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          book: {
+            title: 'VC++深入详解',
+            author: '孙鑫',
+            price: 168
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<parent></parent>
+		</div>
+		
+		<script>
+      Vue.component('parent', {
+        /*data(){
+          return {
+            message: 'Hello vue.js'
+          }
+        },
+        methods: {
+          sayHello(name){
+            console.log("Hello " + name);
+          }
+        },
+        provide(){
+          return {
+            message: this.message,
+            hello: this.sayHello
+          }
+        },*/
+        template: '<child />'
+      })
+      
+      Vue.component('child', {
+        inject: ['message', 'hello'],
+        mounted(){
+          this.hello("lisi");
+        },
+        template: '<p>{{message}}</p>'
+      })
+			new Vue({
+			  el: '#app',
+			  data: {
+          message: 'Hello vue.js'
+        },
+        methods: {
+          sayHello(name){
+            console.log("Hello " + name);
+          }
+        },
+        provide(){
+          return {
+            message: this.message,
+            hello: this.sayHello
+          }
+        },
+			})
+		</script>
+	</body>
+</html>

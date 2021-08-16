@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组合框</title>
+	</head>
+	<body>
+		<div id="app">
+			<combobox 
+			  v-model="selectedVal" 
+			  label="请选择信息来源"
+			  :list="['报纸', '网络', '朋友介绍']">
+			</combobox>
+			<p>选择的值是：{{selectedVal}}</p>
+		</div>
+	
+	  <script src="vue.js"></script>
+		<script>
+			Vue.component('combobox', {
+			  model: {
+			    event: 'change'
+			  },
+			  props: {
+			    label: String,
+			    value: String,
+			    list: {
+			      type: Array,
+			      default: []
+			    }
+			  },
+			  methods: {
+			    handleChange(event){
+			      this.$emit('change', event.target.value);
+			    }
+			  },
+			  template: `
+			    <table>
+			      <tr><td>{{label}}</td></tr>
+			      <tr>
+			        <td><input type="text" :value="value" @change="handleChange($event)"></td>
+			      </tr>
+			      <tr>
+			        <td>
+			          <select :value="value" @change="handleChange($event)">
+			            <option disabled value="">请选择</option>
+			            <option v-for="item of list">
+			              {{item}}
+			            </option>
+			          </select>
+			        </td>
+			      </tr>
+			    </table>
+			  `
+			})
+			var vm = new Vue({
+			  el: '#app',
+			  data: {
+			    selectedVal: ''
+			  }
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>class与style绑定</title>
+		<style>
+		  .active {
+		    width: 100px;
+		    height: 100px;
+		    background-color: green;
+		  }
+		  .text-danger {
+		    background-color: red;
+		  }
+		  .static {
+		    border: solid 2px black;
+		  }
+		</style>
+	</head>
+	<body>
+		<div id = "app">
+		  <!--
+		  <div class="static" :class="{active: isActive, 'text-danger': hasError}"></div>
+		  -->
+		  <div class="static" :class="classObject"></div>
+		</div>
+	
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+		    el: '#app',
+		    data: {
+		      isActive: true,
+		      hasError: false,
+		      error: null
+		      /*classObject: {
+		        active: true,
+		        'text-danger': false
+		      }*/
+ 		    },
+ 		    computed: {
+ 		      classObject(){
+ 		        return {
+ 		          active: this.isActive && !this.error,
+ 		          'text-danger': this.error && this.error.type === 'fatal'
+ 		        }
+ 		      }
+ 		    }
+		  });
+		</script>
+	</body>
+</html>

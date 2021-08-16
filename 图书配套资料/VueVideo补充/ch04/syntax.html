@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello Vue.js</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{ message.toUpperCase() }}</p>
+      <p><a :[attributename]="url">新浪网</a></p>
+      <p v-html="spanHtml"></p>
+      <button @click="sayHello">问候</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          message: "Hello vue.js",
+          url: "http://www.sina.com.cn",
+          spanHtml: "<span style='color: red;'>span元素，以红色字体显示</span>",
+          attributename: "href"
+        },
+        methods: {
+          sayHello(){
+            alert("你好");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

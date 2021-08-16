@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		
+	</head>
+	<body>
+		<div id="app">
+		  <my-input v-model="message"></my-input>
+		</div>
+	
+	  <script src="vue.js"></script>
+	  
+		<script>
+		  Vue.component('MyInput', {
+  	    props: {
+  	      value: String
+  	    },
+  	    methods: {
+  	      handleInput(event){
+  	        this.$emit('input', event.target.value);
+  	      }
+  	    },
+  	    template: `
+  	      <div>
+  	        <label>{{value}}</label>
+  	        <input :value="value" @input="handleInput($event)">
+  	      </div>
+  	    `
+  	  })
+			var vm = new Vue({
+			  el: '#app',
+			  data: {
+			    message: 'VC++深入详解'
+			  }
+			})
+		</script>
+	</body>
+</html>

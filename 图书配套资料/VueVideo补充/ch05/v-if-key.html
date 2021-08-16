@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>指令</title>
+  </head>
+  <body>
+    <div id="app">
+      <template v-if="loginType === 'username'">
+        <label>用户名：</label>
+        <input type="text" placeholder="请输入你的用户名" key="username-input">
+      </template>
+      <template v-else>
+        <label>邮箱：</label>
+        <input type="text" placeholder="请输入你的Email" key="email-input">
+      </template>
+      <p><button @click="changeLoginType">切换登录方式</button></p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          loginType: 'username'
+        },
+        methods: {
+          changeLoginType(){
+            if(this.loginType === 'username'){
+              this.loginType = "email";
+            }
+            else{
+              this.loginType = "username";
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>监听器</title>
+  </head>
+  <body>
+    <div id="app">
+      千米：<input type="text" v-model="kilometers">
+      米：<input type="text" v-model="meters">
+    </div>
+    <p id="info"></p>
+    <script src="vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          meters: 0,
+          kilometers: 0
+        },
+        watch: {
+          kilometers: function(val){
+            this.meters = val * 1000;
+          },
+          meters(val, oldVal){
+            this.kilometers = val / 1000;
+          }
+        }
+      })
+      vm.$watch("kilometers", function(val, oldVal){
+        let info = "修改前的值：" +  oldVal + "，修改后的值：" + val;
+        document.getElementById("info").innerHTML = info;
+      })
+    </script>
+  </body>
+</html>

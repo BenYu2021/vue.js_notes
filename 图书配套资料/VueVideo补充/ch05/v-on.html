@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>指令</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>
+        <button v-on:click="count++">Add 1</button>
+        <span>{{ count }}</span>
+      </p>
+      <p>
+        <button @click="greet">Greet</button>
+      </p>
+      <p>
+        <button @click="say('Hi')">Hi</button>
+      </p>
+      <p>
+        <a href="1.jsp" @click.prevent.once="greet">greet</a>
+      </p>
+      <p>
+        <input @keyup.enter="greet">
+      </p>
+      
+      <p>
+        <input @keyup.17.67="greet">
+      </p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      //var message = "Hello";
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          count: 0,
+          message: 'Hello vue.js'
+        },
+        methods: {
+          greet(){
+            alert(this.message);
+          },
+          //greet: () => alert(this.message),
+          say(msg){
+            alert(msg);
+          }
+        }
+        
+      });
+    </script>
+  </body>
+</html>

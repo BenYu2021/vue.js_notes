@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>指令</title>
+  </head>
+  <body>
+    <div id="app">
+      <p v-pin:top="100">Vue.js无难事</p>
+      <p v-pin:[direction]="100">VC++深入详解</p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      Vue.directive('pin', {
+        bind: function(el, binding){
+          el.style.position = "fixed";
+          let s = binding.arg || "left";
+          el.style[s] = binding.value + "px";
+        }
+      })
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          direction: 'left'
+        }
+      });
+    </script>
+  </body>
+</html>

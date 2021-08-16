@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	  <style>
+	    img {
+	      width: 200px;
+	      height: 200px;
+	    }
+	  </style>
+	</head>
+	<body>
+		<div id="app">
+		  <img v-img="'images/bg.jpg'">
+		</div>
+	
+		<script src="vue.js"></script>
+		<script>
+		  Vue.directive('img', {
+		    inserted(el, binding){
+		      let color = Math.floor(Math.random() * 1000000);
+		      let divElt = document.createElement("div");
+		      let styles = window.getComputedStyle(el);
+		      divElt.style.width = styles.width;
+		      divElt.style.height = styles.height;
+		      divElt.style.backgroundColor = '#' + color;
+		      
+		      el.parentNode.replaceChild(divElt, el);
+		      el.src = binding.value;
+		      el.onload = function(){
+		        alert("pause");
+		        divElt.parentNode.replaceChild(el, divElt);
+		      }
+		    }
+		  })
+			var vm = new Vue({
+				el: '#app',
+			})
+		</script>
+	</body>
+</html>

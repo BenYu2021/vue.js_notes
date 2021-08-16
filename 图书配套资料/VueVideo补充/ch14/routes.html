@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>路由</title>
+		<script src="vue.js"></script>
+		<script src="vue-router.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  <router-link to="/news">新闻</router-link>
+		  <router-link to="/books">图书</router-link>
+		  <router-link to="/video">视频</router-link>
+		  
+		  <router-view></router-view>
+		</div>
+		
+		<script>
+		  const news = {template: '<div>新闻页面</div>'}
+		  const books = {template: '<div>图书页面</div>'}
+		  const video = {template: '<div>视频页面</div>'}
+		  
+		  const routes = [
+		    {path: '/news', component: news},
+		    {path: '/books', component: books},
+		    {path: '/video', component: video}
+		  ]
+		  
+		  const router = new VueRouter({
+		    routes: routes //routes
+		  })
+			new Vue({
+			  el: '#app',
+			  router: router  //router
+			})
+		</script>
+	</body>
+</html>

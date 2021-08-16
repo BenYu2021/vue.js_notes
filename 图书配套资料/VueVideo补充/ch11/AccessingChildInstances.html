@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  <parent></parent>
+		</div>
+	
+		<script>
+			Vue.component('child', {
+			  data(){
+			    return {
+			      message: 'Hello vue.js'
+			    }
+			  },
+			  template: '<p>{{message}}</p>'
+			})
+			Vue.component('parent', {
+			  mounted(){
+			    this.$refs.inputElement.focus();
+			    console.log(this.$refs.childComponent.message);
+			  },
+			  template: `
+			    <div>
+			      <input type="text" ref="inputElement"><br>
+			      <child ref="childComponent" />
+			    </div>
+			  `
+			})
+			new Vue({
+			  el: '#app',
+			  
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>混入</title>
+	</head>
+	<body>
+		<div id="app">
+			<my-component></my-component>
+			<another-component></another-component>
+		</div>
+		<script src="vue.js"></script>
+		<script type = "text/javascript">
+			let myMixin = {
+			  created(){
+			    this.startMixin();
+			  },
+			  methods: {
+			    startMixin(){
+			      document.write("欢迎来到混入实例");
+			    }
+			  }
+			}
+			
+			let component = Vue.extend({
+			  mixins: [myMixin],
+			  template: '<p>Vue.js无难事</p>'
+			})
+			
+			Vue.component('AnotherComponent', {
+			  mixins: [myMixin],
+			  template: '<p>VC++深入详解</p>'
+			})
+			new Vue({
+			  el: '#app',
+			  components: {
+			    MyComponent: component
+			  }
+			})
+		</script>
+	</body>
+</html>

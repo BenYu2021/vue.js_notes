@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>class与style绑定</title>
+	</head>
+	<body>
+		<div id = "app">
+		  <div :style="[baseStyles, moreStyles]">
+		    Vue.js无难事
+		  </div>
+		</div>
+
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+		    el: '#app',
+		    data: {
+		      baseStyles: {
+		        width: '100px',
+		        height: '100px',
+		        border: 'solid 2px black'
+		      },
+		      moreStyles: {
+		        color: 'red',
+		        backgroundColor: 'gray' 
+		      }
+ 		    },
+
+		  });
+		</script>
+	</body>
+</html>

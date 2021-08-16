@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "app">
+			<input type="text" v-model.lazy.trim="message" value="Hello World">
+			<input type="number" v-model.number="num">
+		</div>
+	
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+		    el: '#app',
+		    data: {
+		      message: 'Vue.js无难事',
+		      num: 0
+		    },
+		    watch: {
+		      message(){
+		        console.log(this.message)
+		      },
+		      num(){
+		        console.log(5 === this.num);
+		        console.log(typeof this.num);
+		      }
+		    }
+		  }) 
+		</script>
+	</body>
+</html>
