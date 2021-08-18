@@ -364,14 +364,117 @@ promise
   });
 ```
 
-- promise方法链
-  - 每次调用then()或者catch()方法时，方法实际上会创建并返回另一个promise，因此可以将promise串联调用
-  - promise链式调用可以给后续的promise传递数据，只需要在完成处理函数中指定一个返回值。
-  - 如果没有使用catch()方法指定错误处理的回调函数，那么promise对象抛出的错误不会传递到外层代码，即不会有任何反应。
+- promise 方法链
+  - 每次调用 then()或者 catch()方法时，方法实际上会创建并返回另一个 promise，因此可以将 promise 串联调用
+  - promise 链式调用可以给后续的 promise 传递数据，只需要在完成处理函数中指定一个返回值。
+  - 如果没有使用 catch()方法指定错误处理的回调函数，那么 promise 对象抛出的错误不会传递到外层代码，即不会有任何反应。
 
 # 第 4 章 Vue.js 语法简介
 
+## 4.1 Vue 实例
+
+```js
+var vm = new Vue({});
+```
+
+## 4.2 插值
+
+- {{}}
+
+## 4.3 指令
+
+- 指令是带有 v-前缀的特殊属性，值限定为单个表达式，作用是当表达式值发生改变时，将这个变化反映到 DOM 上。
+- v-bind：响应式更新 HTML 属性
+  - 动态参数\<a v-bind:[attributename]="url"> 新浪网\</a>
+- v-on：监听 DOM 事件
+
 # 第 5 章 指令
+
+## 5.1 内置指令
+
+- v-show
+  - 通过设置 css 属性控制是否显示元素：style="display:none;"
+- v-if/v-else-if/v-else
+
+  - v-if = false：不会创建元素
+  - v-if-key：key 值不同，输入框会重新渲染，切换后原先的输入清空
+
+- v-for
+
+  - 数组变异方法（mutation method）
+
+    - push()
+    - pop()
+    - shift()
+    - unshift()
+    - splice()
+    - sort()
+    - reverse()
+
+  - 数组非变异方法（non-mutation method）,返回新数组
+    - fiter()
+    - concat()
+    - slice()
+
+_Array 对象方法_
+
+| 方法             | 描述                                                           |
+| ---------------- | -------------------------------------------------------------- |
+| concat()         | 连接两个或更多的数组，并返回结果。                             |
+| join()           | 把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。 |
+| pop()            | 删除并返回数组的最后一个元素                                   |
+| push()           | 向数组的末尾添加一个或更多元素，并返回新的长度。               |
+| reverse()        | 颠倒数组中元素的顺序。                                         |
+| shift()          | 删除并返回数组的第一个元素                                     |
+| slice()          | 从某个已有的数组返回选定的元素                                 |
+| sort()           | 对数组的元素进行排序                                           |
+| splice()         | 删除元素，并向数组添加新元素。                                 |
+| toSource()       | 返回该对象的源代码。                                           |
+| toString()       | 把数组转换为字符串，并返回结果。                               |
+| toLocaleString() | 把数组转换为本地数组，并返回结果。                             |
+| unshift()        | 向数组的开头添加一个或更多元素，并返回新的长度。               |
+| valueOf()        | 返回数组对象的原始值                                           |
+
+1. v-for 遍历数组
+2. 数组更新检测
+3. 过滤与排序
+4. 遍历整数
+5. 遍历对象
+6. 对象更新检测
+
+   - Vue 不能检测对象属性的添加和删除。解决方法:
+
+     - Vue 全局 set()和 delete()方法
+     - 实例的$set()和 delete()方法
+
+     ```javascript
+     Vue.set(vm.book, "publishDate", "2019-06-01");
+     vm.$set(vm.book, "publishDate", "2019-06-01");
+
+     Vue.delete(vm.book, "isbn");
+     vm.$delete(vm.book, "isbn");
+     ```
+
+7. 在\<template>上使用v-for
+8. key属性
+
+
+- v-bind
+  - 将一个或多个属性或者一个组件的prop动态绑定到表达式
+- v-model
+  - v-model指令用来在表单\<input>、\<textarea>、\<select>元素上创建双向数据绑定
+  - 本质上是语法糖，它负责监听用户输入事件以更新数据
+- v-on
+- v-text
+- v-html
+- v-once
+- v-pre
+- v-cloak
+- v-slot
+
+## 5.2 自定义指令
+
+## 5.3 实例
 
 # 第 6 章 计算属性
 

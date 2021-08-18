@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>v-if-key</title>
+    <script src="../js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="book in books">{{book.title}}</li>
+      </ul>
+      <ul>
+        <li v-for="(book,index) in books">{{index}}：{{book.title}}</li>
+      </ul>
+    </div>
+
+    
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          books: [
+            { title: "Vue无难事" },
+            { title: "VC++深入详解" },
+            { title: "JSP深入详解" },
+          ],
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>
