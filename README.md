@@ -11,7 +11,7 @@ JSP
 PHP  
 Ajax(Asynchronous JavaScript and XML)  
 Asynchronous JavaScript+CSS+DOM+XMLHttpRequest  
-[Ajax: A New Approach to Web Applications(译文)](http://www.360doc.com/content/05/0714/14/332_1689.shtml)
+[Ajax: A New Approach to Web Applications(译文)](http://www.360doc.com/content/05/0714/14/332_1689.shtml)  
 <https://www.cnblogs.com/arlen/articles/362325.html>
 
     Ajax 并不是一种新技术，它实际上是几种已经在各自领域大行其道的技术的强强结合。Ajax具体的组成部分如下：
@@ -64,7 +64,7 @@ SPA(Single page appplication，单页应用程序)
 
 ![alt MVP](./images/MVP.png)
 
-### MVVM
+### 1.2.3 MVVM
 
 - MVVM(Model-View-ViewModel)
 - 核心是数据驱动 ViewModel，数据双向绑定
