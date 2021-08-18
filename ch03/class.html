@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      class Car {
+        constructor(sName, iDoors) {
+            // _name前下划线是约定记号，表示只能通过对象方法访问属性
+          this._name = sName;
+          this.doors = iDoors;
+        }
+
+        // 只读属性
+        get desc() {
+          return `${this.name} is worth having`; // this.name是对象方法
+        }
+
+        get name() {
+          return this._name;
+        }
+
+        set name(value) {
+          this._name = value;
+        }
+
+        
+        // name(){
+        //   return "name1()";
+        // }
+
+      }
+
+      let car = new Car("benz", 4);
+      console.log(car.name);
+      console.log(car._name);
+    //   console.log(car.name());
+      console.log(car.desc);
+    </script>
+  </head>
+  <body></body>
+</html>

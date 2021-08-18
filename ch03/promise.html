@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+
+      const promise = new Promise(function (resolve, reject) {
+
+        // 开启异步操作
+        setTimeout(function () {
+          try {
+            let c = 6 / 0;
+            console.log(c);
+            resolve(c); // 执行成功调用resolve函数
+          } catch (error) {
+            console.log("error");
+            reject(error); // 执行失败调用reject函数
+          }
+        }, 1000);
+
+      });
+
+      
+
+    </script>
+  </head>
+  <body></body>
+</html>
