@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>值绑定</title>
+    <script src="../js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <h3>单行文本输入</h3>
+
+      <h3>复选框</h3>
+      <input
+        id="argument"
+        type="checkbox"
+        v-model="isAgree"
+        true-value="yes"
+        false-value="no"
+      />
+      <label for="argument">{{isAgree }}</label>
+      <hr />
+      <input
+        id="argument1"
+        type="checkbox"
+        v-model="isAgree1"
+        :true-value="trueValue"
+        :false-value="falseValue"
+      />
+      <label for="argument1">{{isAgree1 }}</label>
+      <hr />
+      <h3>单选按钮</h3>
+      <input type="radio" id="male" :value="genderVal[0]" v-model="gender" />
+      <label for="male">男</label><br />
+      <input type="radio" id="female" :value="genderVal[1]" v-model="gender" />
+      <label for="female">女</label><br />
+      <p>性别：{{gender}}</p>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          isAgree: false,
+          isAgree1: false,
+          trueValue: "真",
+          falseValue: "假",
+
+          gender:'',
+          genderVal: ["帅哥", "美女"],
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>

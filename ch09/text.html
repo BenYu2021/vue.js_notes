@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>text</title>
+    <script src="../js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <h3>单行文本输入</h3>
+      <input type="text" v-model="message" vlue="Hello vue" /><br />
+      v-model.lazy 每次input事件触发后将输入框的值与数据同步<br />
+      <input type="text" v-model.lazy="message" vlue="Hello vue" /><br />
+      <input type="text" v-model.trim="message" vlue="Hello vue" /><br />
+      <p>{{message}}</p>
+      v-model.number转入数值类型<br />
+      <input type="text" v-model.number="num" /><br />
+      <p>{{num}}</p>
+      <h3>多行文本输入</h3>
+      <textarea v-model="message"></textarea>
+      <h3>复选框</h3>
+      <input id="argument" type="checkbox" v-model="isAgree" />
+      <label for="argument">{{isAgree }}</label>
+
+      <h3>多个复选框</h3>
+      <input id="basketball" type="checkbox" value="篮球" v-model="interests" />
+      <label for="basketball">篮球</label>
+      <input id="football" type="checkbox" value="足球" v-model="interests" />
+      <label for="football">足球</label>
+      <p>爱好是：{{interests}}</p>
+
+      <h3>单选按钮</h3>
+      <input type="radio" id="male" value="1" v-model="gender" />
+      <label for="male">男</label><br />
+      <input type="radio" id="female" value="0" v-model="gender" />
+      <label for="female">女</label><br />
+      <p>性别：{{gender}}</p>
+      <h3>选择框</h3>
+      <select v-model="education">
+        <option disabled value="">请选择您的学历</option>
+        <option>高中</option>
+        <option>本科</option>
+        <option>硕士</option>
+        <option>博士</option>
+      </select>
+      <p>您的学历是：{{education}}</p>
+
+      <h3>多选选择框</h3>
+      <select v-model="searches" multiple>
+        <option v-for="option in options" v-bind:value="option.value">
+          {{option.text}}
+        </option>
+      </select>
+      <p>搜索引擎：{{searches}}</p>
+      
+      <h3>选择框</h3>
+      <h3>选择框</h3>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          message: "vue 无难事",
+          num: 0,
+          education: "",
+          isAgree: false,
+          interests: [],
+          gender: "",
+          searches: [],
+          options: [
+            { text: "baidu", value: "www.baidu.com" },
+            { text: "bing", value: "www.bing.com" },
+            { text: "google", value: "www.google.com" },
+          ],
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>

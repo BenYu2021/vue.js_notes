@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>filter</title>
+    <script src="../js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>{{message | capitalize}}</p>
+      <a v-bind:href="url | lowercase">{{url | lowercase}}</a>
+      <h3>过滤器参数</h3>
+
+      <!--
+        [Vue warn]: Error in render: "TypeError: format is not a function"
+        过滤器虽然是函数，但不能传第一个参数当普通函数用
+        <p>{{format(filename, "vue", "js")}}</p> -->
+      <p>{{filename | format("vue", "js")}}</p>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          message: "hello world",
+          url: "https://www.BAIDU.COM",
+          filename: "fileName",
+        },
+        methods: {},
+        filters: {
+          capitalize: function (value) {
+            if (!value) return "";
+            value = value.toString();
+            return value.charAt(0).toUpperCase() + value.slice(1);
+          },
+          lowercase(value) {
+            return value.toString().toLowerCase();
+          },
+          format(value, prefix, suffix) {
+            if (!value) return "";
+            value = value.toString();
+            return prefix + "-" + value + "." + suffix;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>component</title>
+    <script src="../js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- <ButtonCounter></ButtonCounter> -->
+      <button-counter></button-counter>
+      <!-- <ButtonCounter1></ButtonCounter1> -->
+      <h3>不能用ButtonCounter1但可以用button-counter1</h3>
+      <button-counter1></button-counter1>
+    </div>
+    <script>
+      // Vue.component("ButtonCounter", {
+      //   data: function () {
+      //     return { count: 0 };
+      //   },
+      //   template:
+      //     '<button v-on:click="count++">You clicked me {{count}} times.</button>',
+      // });
+
+      Vue.component("button-counter", {
+        data: function () {
+          return { count: 0 };
+        },
+        template:
+          '<button v-on:click="count++">You clicked me {{count}} times.</button>',
+      });
+
+      let MyComponent = Vue.extend({
+        template:
+          '<button v-on:click="count++">You clicked me {{count}} times.</button>',
+        data: function () {
+          return { count: 0 };
+        },
+      });
+
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components: {
+          ButtonCounter1: MyComponent,
+        },
+      });
+    </script>
+  </body>
+</html>

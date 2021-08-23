@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>v-if-key</title>
+    <script src="../js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>
+        <button v-on:click="count += 1">ADD 1</button>
+        <span>count:{{count}}</span>
+      </p>
+      <p>
+        <button v-on:click="greet">Greet</button>
+        <button @click="greet">Greet</button>
+      </p>
+      <p>
+        <button v-on:click="say('Hi')">Hi</button>
+      </p>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          count: 0,
+          message: "hello world",
+        },
+        methods: {
+          greet: function () {
+            // 方法内this指向vm
+            alert(this.message);
+          },
+          // 对象方法的简写
+          say(msg) {
+            alert(msg);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

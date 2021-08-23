@@ -1,39 +1,39 @@
 ﻿<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<script src="vue.js"></script>
-	</head>
-	<body>
-		<div id="app">
-			<!--
+  <head>
+    <meta charset="UTF-8" />
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!--
 			<my-checkbox v-model="isAgree" value="同意协议"></my-checkbox>
 			-->
-			<my-checkbox
-        	:checked="isAgree"
-        	@change="val => { isAgree = val }"
-        	value="同意协议">
+      <my-checkbox
+        :checked="isAgree"
+        @change="val => { isAgree = val }"
+        value="同意协议"
+      >
       </my-checkbox>
+    </div>
 
-		</div>
-	
-		<script>
-			Vue.component('MyCheckbox', {
-				model: {
-					// 使用checked替换value作为prop
-	    		prop: 'checked',
-	    		event: 'change'
-		  	},
-			  props: {
-			    // value prop可以用于不同的目的
-			    value: String,
-			    // 使用checked替换value作为prop
-			    checked: {
-			      type: Boolean,
-			      default: false
-			    }
-			  },
-			  template: `
+    <script>
+      Vue.component("MyCheckbox", {
+        model: {
+          // 使用checked替换value作为prop
+          prop: "checked",
+          event: "change",
+        },
+        props: {
+          // value prop可以用于不同的目的
+          value: String,
+          // 使用checked替换value作为prop
+          checked: {
+            type: Boolean,
+            default: false,
+          },
+        },
+        template: `
 			    <div>
 			      <input 
 			        type="checkbox"
@@ -41,15 +41,15 @@
 			        @change="$emit('change', $event.target.checked)">
 			      <label>{{value}}</label>
 			    </div>
-			  `
-		  });
-  		
-			new Vue({
-			  el: '#app',
-			  data: {
-			  	isAgree: false
-			  }
-			})
-		</script>
-	</body>
+			  `,
+      });
+
+      new Vue({
+        el: "#app",
+        data: {
+          isAgree: false,
+        },
+      });
+    </script>
+  </body>
 </html>

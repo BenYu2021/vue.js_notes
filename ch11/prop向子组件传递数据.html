@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>v-if-key</title>
+    <script src="../js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <post-item post-title="Vue.js 无难事"></post-item>
+    </div>
+
+    <script>
+      Vue.component('PostItem', {
+        // 声明props
+        props:['postTitle'],
+        template:'<h3>{{postTitle}}</h3>'
+      });
+      var vm = new Vue({
+          el:"#app",
+          data:{
+          },
+          methods: {
+
+          },
+      });
+    </script>
+  </body>
+</html>

@@ -323,7 +323,7 @@ const promise = new Promise(function (resolve, reject) {
 });
 ```
 
-- 声明周期
+- 生命周期
   - pending -> fullfilled
   - pending -> rejected
 
@@ -455,36 +455,227 @@ _Array 对象方法_
      vm.$delete(vm.book, "isbn");
      ```
 
-7. 在\<template>上使用v-for
-8. key属性
-
+7. 在\<template>上使用 v-for
+8. key 属性
 
 - v-bind
-  - 将一个或多个属性或者一个组件的prop动态绑定到表达式
+  - 将一个或多个属性或者一个组件的 prop 动态绑定到表达式
 - v-model
-  - v-model指令用来在表单\<input>、\<textarea>、\<select>元素上创建双向数据绑定
+
+  - v-model 指令用来在表单\<input>、\<textarea>、\<select>元素上创建双向数据绑定
   - 本质上是语法糖，它负责监听用户输入事件以更新数据
+
+  ```js
+    <div id="app">
+      <input type="text" v-model="message" />
+      <h1>{{message}}</h1>
+    </div>
+
+    <script>
+      var vm = new Vue({
+          el:"#app",
+          data:{
+            message:"hello world"
+          },
+      });
+    </script>
+  ```
+
 - v-on
+
+  - v-on 指令用于监听 DOM 事件，并在触发时运行一些 JS 代码。
+  - 表达式可以是一段 js 代码，一个方法名字、方法调用语句
+
+  1. 事件修饰符
+
+     - .stop：调用 event.stopPropagation()
+     - .prevent：调用 event.stopPreventDefault()
+     - .capture：添加事件监听器 capture 模式
+     - .self：只当事件是从监听器绑定的元素本身触发时才触发回调
+     - .{keyCode | keyAlias}
+     - .navtive：监听组件根元素的原生事件
+     - .once
+     - .left 鼠标左键
+     - .right
+     - .middle
+     - .passive
+
+     JavaScript 的 DOM 事件模型
+
+     - 捕获型和冒泡型
+
+  2. 按键修饰符
+
+     - .enter
+     - .tab
+
+  3. .exact 修饰符
+  4. 鼠标按键修饰符
+
 - v-text
+  - 更新元素文本内容
 - v-html
+  - 更新元素的 innerHTML
 - v-once
+  - 让元素或组件只渲染一次
+  - 该指令不需要表达式
 - v-pre
+  - 跳过这个元素和它子元素的编译过程
+  - 用来显示元素{{}}标签
 - v-cloak
+
+  - 隐藏未编译的{{}}标签直到实例准备完毕
+
+  ```js
+    <head>
+      <style>
+        [v-cloak] {
+          display: none;
+        }
+      </style>
+    </head>
+
+    <body>
+      <div id="app">
+        <h1 v-cloak>{{message}}</h1>
+      </div>
+
+      <script>
+        var vm = new Vue({
+          el: "#app",
+          data: {
+            message: "Vue.js",
+          },
+        });
+      </script>
+    </body>
+  ```
+
 - v-slot
+  - 提供命名的插槽或需要接收 prop 的插槽
 
 ## 5.2 自定义指令
+
+### 5.2.1 自定义指令的注册
+
+- 全局注册
+  - Vue.directive(id, [definition])
+- 局部注册
+  - 只能用在该实例绑定的视图中
+
+### 5.2.2 钩子函数
+
+- bind
+- inserted
+- update
+- componentUpdate
+- unbind
+
+#### 指令钩子函数的参数
+
+- el
+- binding
+
+### 5.2.3 动态指令参数
+
+### 5.2.4 函数简写
+
+### 5.2.5 对象字面量
 
 ## 5.3 实例
 
 # 第 6 章 计算属性
 
+## 6.1 定义计算属性
+
+## 6.2 计算属性缓存
+
+## 6.3 v-for 和 v-if 一起使用的替代方案
+
 # 第 7 章 监听器
+
+## 7.1 使用监听器
+
+## 7.2 监听器的更多形式
 
 # 第 8 章 class 与 style 绑定
 
+## 8.1 绑定 HTML class
+
+- v-bind:class
+
+### 8.1.1 对象语法
+
+### 8.1.2 数组语法
+
+### 8.1.3 在组件上使用
+
+## 8.2 绑定内联样式
+
+- v-bind:style
+
+### 8.2.1 对象语法
+
+### 8.2.2 数组语法
+
+### 8.2.3 自动添加前缀
+
+### 8.2.4 多重值
+
 # 第 9 章 表单输入绑定
 
+## 9.1 单行文本输入
+
+- v-model
+  - v-model 会忽略所有表单元素的 value、checked、selected 属性的初始值，总是将 Vue 实例的数据属性作为数据来源。
+  - .trim
+  - ## .lazy
+  - .number
+
+## 9.2 多行文本输入
+
+## 9.3 复选框
+
+## 9.4 单选按钮
+
+## 9.5 选择框
+
+## 9.6 值绑定
+
+### 9.6.1 复选框
+
+### 9.6.2 单选按钮
+
+### 9.6.3 选择框的选项
+
+## 9.7 实例：用户注册
+
 # 第 10 章 过滤器
+
+- 过滤器主要用于文本格式化，数组数据过滤和排序
+- 本质是一个 js 函数，与自定义指令类似
+
+## 10.1 全局过滤器与局部过滤器
+
+- 全局
+  ```js
+  Vue.filter(id, [definition]);
+  ```
+- 局部
+
+  ```js
+  new Vue({
+    filters: id : function (value) {},
+  });
+  ```
+
+- 过滤器用在两个地方：差值，v-bind 表达式，支持|管道
+
+## 10.2 过滤器参数
+
+- 总是接收表达式的值作为第一个参数
+
+## 10.3 过滤器串联
 
 # 第 11 章 组件
 

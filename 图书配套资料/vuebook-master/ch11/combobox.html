@@ -1,38 +1,36 @@
 ﻿<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>组合框</title>
-		<script src="vue.js"></script>
-	</head>
-	<body>
-		<div id="app">
-			<combobox 
-				label="请选择了解信息的渠道"
-				:list="['报纸', '网络', '朋友介绍']"
-				v-model="selectedVal">
-			</combobox>
-			<span>选中的值是：{{selectedVal}}</span>
-		</div>
-	
-		<script>
-			Vue.component('combobox', {
-			  inheritAttrs: false,
-			  props: ['label', 'value', 'list'],
-			  computed: {
-			    inputListeners: function () {
-			      var vm = this
-			      return Object.assign({},
-			        this.$listeners,
-			        {
-			          input: function (event) {
-			            vm.$emit('input', event.target.value)
-			          }
-			        }
-			      )
-			    }
-			  },
-			  template: `
+  <head>
+    <meta charset="UTF-8" />
+    <title>组合框</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <combobox
+        label="请选择了解信息的渠道"
+        :list="['报纸', '网络', '朋友介绍']"
+        v-model="selectedVal"
+      >
+      </combobox>
+      <span>选中的值是：{{selectedVal}}</span>
+    </div>
+
+    <script>
+      Vue.component("combobox", {
+        inheritAttrs: false,
+        props: ["label", "value", "list"],
+        computed: {
+          inputListeners: function () {
+            var vm = this;
+            return Object.assign({}, this.$listeners, {
+              input: function (event) {
+                vm.$emit("input", event.target.value);
+              },
+            });
+          },
+        },
+        template: `
 			  	<div>
 				    <label style="float: left;">
 				      {{ label }}
@@ -57,15 +55,15 @@
 				      </tr>
 				    </table>
 			    </div>
-			  `
-			})
+			  `,
+      });
 
-			new Vue({
-			  el: '#app',
-			  data: {
-			  	selectedVal: ''
-			  }
-			})
-		</script>
-	</body>
+      new Vue({
+        el: "#app",
+        data: {
+          selectedVal: "",
+        },
+      });
+    </script>
+  </body>
 </html>

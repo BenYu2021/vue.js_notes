@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>v-if-key</title>
+    <script src="../js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 父组件使用v-on指令监听子组件的自定义事件 -->\
+      <!-- greet是自定义事件 -->
+      <child v-on:greet="sayHello"></child>
+    </div>
+
+    <script>
+      Vue.component("child", {
+        data: function () {
+          return {
+            name: "张三",
+          };
+        },
+        methods: {
+          handleClick() {
+            // 子组件使用 $emit() 方法触发事件
+            // 调用emit方法触发自定义事件greet，并传递参数
+            this.$emit("greet", this.name);
+          },
+        },
+        template: '<button v-on:click="handleClick">开始欢迎</button>',
+      });
+
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+        methods: {
+          sayHello(name) {
+            alert("hello, " + name);
+            console.log("hello, " + name);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
