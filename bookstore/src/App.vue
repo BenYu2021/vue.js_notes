@@ -4,9 +4,22 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
+
+<script>
+import Header from "@/components/Header.vue";
+import Menus from "@/components/Menus.vue";
+
+export default {
+  components: {
+    Header,
+    Menus,
+  },
+};
+</script>
+
 
 <style>
 #app {
